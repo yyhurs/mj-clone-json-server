@@ -1,33 +1,33 @@
-var item = document.querySelector('.js-item');
-var ID = location.search.substr(4);
-var data;
+var item = document.querySelector('.js-item')
+var ID = location.search.substr(4)
+var data
 
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
+var xhr = new XMLHttpRequest()
+xhr.withCredentials = true
 
-xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === 4) {
-        console.log(this.responseText);
-    }
-});
+xhr.addEventListener('readystatechange', function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText)
+  }
+})
 
-xhr.open("GET", "http://localhost:3000/posts/" + ID);
-xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-xhr.setRequestHeader("User-Agent", "PostmanRuntime/7.15.0");
-xhr.setRequestHeader("Accept", "*/*");
-xhr.setRequestHeader("Cache-Control", "no-cache");
-xhr.setRequestHeader("Postman-Token", "4be7bf61-f071-47fe-944f-2864f911b6cc,df1268d1-a963-4d6a-9ecc-d773189cc92c");
-xhr.setRequestHeader("Host", "localhost:3000");
-xhr.setRequestHeader("accept-encoding", "gzip, deflate");
-xhr.setRequestHeader("content-length", "109");
-xhr.setRequestHeader("Connection", "keep-alive");
-xhr.setRequestHeader("cache-control", "no-cache");
+xhr.open('GET', 'https://my-json-server.typicode.com/yyhurs/json-server-db/posts/' + ID)
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+xhr.setRequestHeader('User-Agent', 'PostmanRuntime/7.15.0')
+xhr.setRequestHeader('Accept', '*/*')
+xhr.setRequestHeader('Cache-Control', 'no-cache')
+xhr.setRequestHeader('Postman-Token', '4be7bf61-f071-47fe-944f-2864f911b6cc,df1268d1-a963-4d6a-9ecc-d773189cc92c')
+xhr.setRequestHeader('Host', 'localhost:3000')
+xhr.setRequestHeader('accept-encoding', 'gzip, deflate')
+xhr.setRequestHeader('content-length', '109')
+xhr.setRequestHeader('Connection', 'keep-alive')
+xhr.setRequestHeader('cache-control', 'no-cache')
 
-xhr.send(data);
-xhr.onload = function(){
-    data = JSON.parse(xhr.responseText);
-    document.title = data.title
-    item.innerHTML = `
+xhr.send(data)
+xhr.onload = function () {
+  data = JSON.parse(xhr.responseText)
+  document.title = data.title
+  item.innerHTML = `
         <div class="l-post post__info">
             <h2 class="info__title">${data.title}</h2>
             <div class="info__site flex-row">
@@ -63,5 +63,5 @@ xhr.onload = function(){
         <div class="l-post post__desc">
             <p>${data.description}</p>
         </div>
-    `;
+    `
 }
